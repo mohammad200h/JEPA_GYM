@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "rl-policy"
+version = "0.1.0"
+description = ""
+authors = ["mohammad <mohammad200h@hotmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+gymnasium = {extras = ["other"], version = "^1.2.3"}
+pygame = "^2.6.1"
+stable-baselines3 = "^2.7.1"
+tensorboard = "^2.20.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
