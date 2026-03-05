@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "Jepa"
+version = "0.1.0"
+description = ""
+authors = ["mohammad <mohammad200h@hotmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+gymnasium = {extras = ["other"], version = "^1.2.3"}
+pygame = "^2.6.1"
+stable-baselines3 = "^2.7.1"
+tensorboard = "^2.20.0"
+h5py = "^3.15.1"
+gradio = "^5.0.0"
+dropbox = "^12.0.0"
+python-dotenv = "^1.0.0"
+tqdm = "^4.66.0"
+
+torch = "^2.3.0"
+pytorch-lightning = "^2.3.0"
+numpy = "^1.26.0"
+torchvision = "^0.18.0"
+Pillow = "^10.0.0"
+setuptools = "^82.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
