@@ -1,5 +1,5 @@
 import copy
-from typing import Optional, Tuple
+from typing import Literal, Optional, Tuple
 
 import numpy as np
 import pytorch_lightning as pl
@@ -16,6 +16,7 @@ class MLP(nn.Module):
         out_dim: int,
         num_layers: int = 2,
         activation: nn.Module = nn.ReLU(),
+        dropout: float = 0.0,
     ) -> None:
         super().__init__()
         layers = []
@@ -24,6 +25,8 @@ class MLP(nn.Module):
             layers.append(nn.Linear(d_in, d_out))
             if d_out != out_dim:
                 layers.append(activation)
+                if dropout > 0:
+                    layers.append(nn.Dropout(dropout))
         self.net = nn.Sequential(*layers)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
@@ -51,7 +54,14 @@ class JEPA(pl.LightningModule):
         hidden_dim: int = 256,
         lr: float = 3e-4,
         ema_tau: float = 0.99,
-        weight_decay: float = 1e-5,
+        weight_decay: float = 1e-4,
+        dropout: float = 0.1,
+        lr_scheduler: Literal["cosine", "plateau"] = "plateau",
+        cosine_T_max: int = 1_000_000,
+        cosine_eta_min: float = 1e-6,
+        plateau_factor: float = 0.5,
+        plateau_patience: int = 10,
+        plateau_min_lr: float = 1e-6,
     ) -> None:
         """
         Args:
@@ -61,7 +71,14 @@ class JEPA(pl.LightningModule):
             hidden_dim: Hidden size for MLPs.
             lr: Adam learning rate.
             ema_tau: EMA coefficient for target encoder update.
-            weight_decay: AdamW weight decay.
+            weight_decay: AdamW weight decay (stronger helps against overfitting).
+            dropout: Dropout probability in encoder/predictor MLPs (0 = disabled).
+            lr_scheduler: "cosine" for CosineAnnealingLR, "plateau" for ReduceLROnPlateau.
+            cosine_T_max: Max steps for cosine schedule (only if lr_scheduler=="cosine").
+            cosine_eta_min: Min LR for cosine schedule (only if lr_scheduler=="cosine").
+            plateau_factor: Factor by which LR is reduced (only if lr_scheduler=="plateau").
+            plateau_patience: Epochs without improvement before reducing LR (only if lr_scheduler=="plateau").
+            plateau_min_lr: Minimum LR for plateau schedule (only if lr_scheduler=="plateau").
         """
         super().__init__()
         self.save_hyperparameters()
@@ -74,6 +91,7 @@ class JEPA(pl.LightningModule):
             hidden_dim=hidden_dim,
             out_dim=embed_dim,
             num_layers=3,
+            dropout=dropout,
         )
 
         # Predictor: concat(z_ctx, a_t) -> z_pred
@@ -82,6 +100,7 @@ class JEPA(pl.LightningModule):
             hidden_dim=hidden_dim,
             out_dim=embed_dim,
             num_layers=3,
+            dropout=dropout,
         )
 
         # Target encoder: [o_t, o_{t+1}] -> z_target (EMA copy of context encoder)
@@ -92,6 +111,12 @@ class JEPA(pl.LightningModule):
         self.ema_tau = ema_tau
         self.lr = lr
         self.weight_decay = weight_decay
+        self.lr_scheduler = lr_scheduler
+        self.cosine_T_max = cosine_T_max
+        self.cosine_eta_min = cosine_eta_min
+        self.plateau_factor = plateau_factor
+        self.plateau_patience = plateau_patience
+        self.plateau_min_lr = plateau_min_lr
 
     @torch.no_grad()
     def _update_target_encoder(self) -> None:
@@ -169,6 +194,9 @@ class JEPA(pl.LightningModule):
         loss = F.mse_loss(z_pred, z_target)
         self.log("train_loss", loss, prog_bar=True, on_step=True, on_epoch=True)
 
+        lr = self.optimizers().param_groups[0]["lr"]
+        self.log("lr", lr, prog_bar=False, on_step=True, on_epoch=False)
+
         # EMA update after computing gradients
         self._update_target_encoder()
 
@@ -191,4 +219,23 @@ class JEPA(pl.LightningModule):
         optimizer = torch.optim.AdamW(
             self.parameters(), lr=self.lr, weight_decay=self.weight_decay
         )
-        return optimizer
+        if self.lr_scheduler == "cosine":
+            scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(
+                optimizer, T_max=self.cosine_T_max, eta_min=self.cosine_eta_min
+            )
+            lr_config = {"scheduler": scheduler, "interval": "step", "frequency": 1}
+        else:  # "plateau"
+            scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
+                optimizer,
+                mode="min",
+                factor=self.plateau_factor,
+                patience=self.plateau_patience,
+                min_lr=self.plateau_min_lr,
+            )
+            lr_config = {
+                "scheduler": scheduler,
+                "monitor": "val_loss",
+                "interval": "epoch",
+                "frequency": 1,
+            }
+        return {"optimizer": optimizer, "lr_scheduler": lr_config}
