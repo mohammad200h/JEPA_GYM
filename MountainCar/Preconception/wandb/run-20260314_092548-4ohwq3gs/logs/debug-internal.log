@@ -1,0 +1,21 @@
+{"time":"2026-03-14T09:25:48.761743225Z","level":"INFO","msg":"wandb-core"}
+{"time":"2026-03-14T09:25:48.762380249Z","level":"INFO","msg":"stream: starting","core version":"0.25.1"}
+{"time":"2026-03-14T09:25:49.013635393Z","level":"INFO","msg":"stream: created new stream","id":"4ohwq3gs"}
+{"time":"2026-03-14T09:25:49.013720297Z","level":"INFO","msg":"handler: started"}
+{"time":"2026-03-14T09:25:49.013850506Z","level":"INFO","msg":"stream: started"}
+{"time":"2026-03-14T09:25:49.013955418Z","level":"INFO","msg":"sender: started"}
+{"time":"2026-03-14T09:25:49.013946127Z","level":"INFO","msg":"writer: started","stream_id":"4ohwq3gs"}
+{"time":"2026-03-14T09:25:54.699451778Z","level":"INFO","msg":"filestream: sending request","total_files":0,"uploaded_len":1}
+{"time":"2026-03-14T09:25:54.873625676Z","level":"INFO","msg":"filestream: request sent","status":"200 OK"}
+{"time":"2026-03-14T09:26:06.426612744Z","level":"WARN","msg":"tensorboard: no root directory","error":"timed out after 10s"}
+{"time":"2026-03-14T09:26:06.426769124Z","level":"INFO","msg":"tensorboard: tracking new log directory","rootDir":{},"logDir":"LocalOrCloudPath(LocalPath=\"/home/mamad/Hubby/JEPA/JEPA_GYM/MountainCar/Preconception/logs/PPO_embed_dim_4/PPO_5\")","namespace":""}
+{"time":"2026-03-14T09:26:06.427653645Z","level":"INFO","msg":"tensorboard: saving file","fileLocation":"/home/mamad/Hubby/JEPA/JEPA_GYM/MountainCar/Preconception/logs/PPO_embed_dim_4/PPO_5/events.out.tfevents.1773480356.Blade.386214.1","runPath":"logs/PPO_embed_dim_4/PPO_5/events.out.tfevents.1773480356.Blade.386214.1"}
+{"time":"2026-03-14T09:26:09.701230335Z","level":"INFO","msg":"filestream: sending request","total_files":2,"events_offset":0,"events_lines":2,"console_offset":0,"console_lines":9,"uploaded_len":1}
+{"time":"2026-03-14T09:26:09.878502642Z","level":"INFO","msg":"filestream: request sent","status":"200 OK"}
+{"time":"2026-03-14T09:26:16.030583546Z","level":"INFO","msg":"stream: closing"}
+{"time":"2026-03-14T09:26:16.770910774Z","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2026-03-14T09:26:16.771214561Z","level":"INFO","msg":"filestream: sending request","total_files":2,"console_offset":9,"console_lines":47,"uploaded_len":4,"complete":true,"exit_code":1}
+{"time":"2026-03-14T09:26:16.978336984Z","level":"INFO","msg":"filestream: request sent","status":"200 OK"}
+{"time":"2026-03-14T09:26:16.978555027Z","level":"INFO","msg":"handler: closed"}
+{"time":"2026-03-14T09:26:16.978674033Z","level":"INFO","msg":"sender: closed"}
+{"time":"2026-03-14T09:26:16.978685251Z","level":"INFO","msg":"stream: closed"}

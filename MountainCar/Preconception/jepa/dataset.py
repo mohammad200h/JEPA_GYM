@@ -114,15 +114,16 @@ class JEPA_Dataset(Dataset):
 
                     episode_obs = eps_grp[self.episode_obs_key][:]
                     episode_actions = eps_grp[self.episode_action_key][:]
+                    T = episode_obs.shape[0]
 
-                    if episode_obs.shape[0] != episode_actions.shape[0]:
+                    if T != episode_actions.shape[0]:
                         raise ValueError(
                             f"Observation and action time dimensions must match in "
                             f"{policy_name}/{eps_name}, got "
                             f"{episode_obs.shape[0]} and {episode_actions.shape[0]}"
                         )
 
-                    if episode_obs.shape[0] < 3:
+                    if T < 3:
                         # Not enough timesteps in this episode to form tuples.
                         continue
 

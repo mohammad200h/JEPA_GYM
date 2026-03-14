@@ -1,0 +1,543 @@
+2026-03-12 21:50:33,712 INFO    MainThread:873687 [wandb_setup.py:_flush():81] Current SDK version is 0.25.1
+2026-03-12 21:50:33,713 INFO    MainThread:873687 [wandb_setup.py:_flush():81] Configure stats pid to 873687
+2026-03-12 21:50:33,713 INFO    MainThread:873687 [wandb_setup.py:_flush():81] Loading settings from environment variables
+2026-03-12 21:50:33,713 INFO    MainThread:873687 [wandb_init.py:setup_run_log_directory():717] Logging user logs to /home/mamad/Hubby/JEPA/JEPA_GYM/MountainCar/Preconception/wandb/run-20260312_215033-xfebisgy/logs/debug.log
+2026-03-12 21:50:33,713 INFO    MainThread:873687 [wandb_init.py:setup_run_log_directory():718] Logging internal logs to /home/mamad/Hubby/JEPA/JEPA_GYM/MountainCar/Preconception/wandb/run-20260312_215033-xfebisgy/logs/debug-internal.log
+2026-03-12 21:50:33,715 INFO    MainThread:873687 [wandb_init.py:init():844] calling init triggers
+2026-03-12 21:50:33,715 INFO    MainThread:873687 [wandb_init.py:init():849] wandb.init called with sweep_config: {}
+config: {'_wandb': {}}
+2026-03-12 21:50:33,715 INFO    MainThread:873687 [wandb_init.py:init():892] starting backend
+2026-03-12 21:50:34,014 INFO    MainThread:873687 [wandb_init.py:init():895] sending inform_init request
+2026-03-12 21:50:34,019 INFO    MainThread:873687 [wandb_init.py:init():903] backend started and connected
+2026-03-12 21:50:34,021 INFO    MainThread:873687 [wandb_init.py:init():973] updated telemetry
+2026-03-12 21:50:34,028 INFO    MainThread:873687 [wandb_init.py:init():997] communicating run to backend with 90.0 second timeout
+2026-03-12 21:50:34,927 INFO    MainThread:873687 [wandb_init.py:init():1042] starting run threads in backend
+2026-03-12 21:50:35,119 INFO    MainThread:873687 [wandb_run.py:_console_start():2524] atexit reg
+2026-03-12 21:50:35,119 INFO    MainThread:873687 [wandb_run.py:_redirect():2373] redirect: wrap_raw
+2026-03-12 21:50:35,119 INFO    MainThread:873687 [wandb_run.py:_redirect():2442] Wrapping output streams.
+2026-03-12 21:50:35,119 INFO    MainThread:873687 [wandb_run.py:_redirect():2465] Redirects installed.
+2026-03-12 21:50:35,123 INFO    MainThread:873687 [wandb_init.py:init():1082] run started, returning control to user process
+2026-03-12 21:50:43,023 INFO    MainThread:873687 [wandb_run.py:_tensorboard_callback():1614] tensorboard callback: logs/PPO_embed_dim_2/PPO_1, True
+2026-03-12 21:50:52,058 INFO    wandb-AsyncioManager-main:873687 [service_client.py:_forward_responses():134] Reached EOF.
+2026-03-12 21:50:52,058 INFO    wandb-AsyncioManager-main:873687 [mailbox.py:close():155] Closing mailbox, abandoning 1 handles.
+2026-03-12 21:50:52,944 ERROR   wandb-AsyncioManager-main:873687 [asyncio_manager.py:fn_wrap_exceptions():184] Uncaught exception in run_soon callback.
+Traceback (most recent call last):
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 182, in fn_wrap_exceptions
+    await fn()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 45, in publish
+    await self._send_server_request(request)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 87, in _send_server_request
+    await self._drain_writer()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 96, in _drain_writer
+    await self._writer.drain()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 392, in drain
+    await self._protocol._drain_helper()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 166, in _drain_helper
+    raise ConnectionResetError('Connection lost')
+ConnectionResetError: Connection lost
+2026-03-12 21:50:52,950 ERROR   wandb-AsyncioManager-main:873687 [asyncio_manager.py:fn_wrap_exceptions():184] Uncaught exception in run_soon callback.
+Traceback (most recent call last):
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 182, in fn_wrap_exceptions
+    await fn()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 45, in publish
+    await self._send_server_request(request)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 87, in _send_server_request
+    await self._drain_writer()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 96, in _drain_writer
+    await self._writer.drain()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 392, in drain
+    await self._protocol._drain_helper()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 166, in _drain_helper
+    raise ConnectionResetError('Connection lost')
+ConnectionResetError: Connection lost
+2026-03-12 21:50:52,954 ERROR   wandb-AsyncioManager-main:873687 [asyncio_manager.py:fn_wrap_exceptions():184] Uncaught exception in run_soon callback.
+Traceback (most recent call last):
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 182, in fn_wrap_exceptions
+    await fn()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 45, in publish
+    await self._send_server_request(request)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 87, in _send_server_request
+    await self._drain_writer()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 96, in _drain_writer
+    await self._writer.drain()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 392, in drain
+    await self._protocol._drain_helper()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 166, in _drain_helper
+    raise ConnectionResetError('Connection lost')
+ConnectionResetError: Connection lost
+2026-03-12 21:50:52,960 ERROR   wandb-AsyncioManager-main:873687 [asyncio_manager.py:fn_wrap_exceptions():184] Uncaught exception in run_soon callback.
+Traceback (most recent call last):
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 182, in fn_wrap_exceptions
+    await fn()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 45, in publish
+    await self._send_server_request(request)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 78, in _send_server_request
+    raise self._broken_exc.with_traceback(self._broken_tb)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 87, in _send_server_request
+    await self._drain_writer()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 96, in _drain_writer
+    await self._writer.drain()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 392, in drain
+    await self._protocol._drain_helper()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 166, in _drain_helper
+    raise ConnectionResetError('Connection lost')
+ConnectionResetError: Connection lost
+2026-03-12 21:50:52,962 ERROR   wandb-AsyncioManager-main:873687 [asyncio_manager.py:fn_wrap_exceptions():184] Uncaught exception in run_soon callback.
+Traceback (most recent call last):
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 182, in fn_wrap_exceptions
+    await fn()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 45, in publish
+    await self._send_server_request(request)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 78, in _send_server_request
+    raise self._broken_exc.with_traceback(self._broken_tb)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 87, in _send_server_request
+    await self._drain_writer()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 96, in _drain_writer
+    await self._writer.drain()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 392, in drain
+    await self._protocol._drain_helper()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 166, in _drain_helper
+    raise ConnectionResetError('Connection lost')
+ConnectionResetError: Connection lost
+2026-03-12 21:50:52,963 ERROR   wandb-AsyncioManager-main:873687 [asyncio_manager.py:fn_wrap_exceptions():184] Uncaught exception in run_soon callback.
+Traceback (most recent call last):
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 182, in fn_wrap_exceptions
+    await fn()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 45, in publish
+    await self._send_server_request(request)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 78, in _send_server_request
+    raise self._broken_exc.with_traceback(self._broken_tb)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 87, in _send_server_request
+    await self._drain_writer()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 96, in _drain_writer
+    await self._writer.drain()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 392, in drain
+    await self._protocol._drain_helper()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 166, in _drain_helper
+    raise ConnectionResetError('Connection lost')
+ConnectionResetError: Connection lost
+2026-03-12 21:50:52,968 ERROR   wandb-AsyncioManager-main:873687 [asyncio_manager.py:fn_wrap_exceptions():184] Uncaught exception in run_soon callback.
+Traceback (most recent call last):
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 182, in fn_wrap_exceptions
+    await fn()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 45, in publish
+    await self._send_server_request(request)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 78, in _send_server_request
+    raise self._broken_exc.with_traceback(self._broken_tb)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 87, in _send_server_request
+    await self._drain_writer()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 96, in _drain_writer
+    await self._writer.drain()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 392, in drain
+    await self._protocol._drain_helper()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 166, in _drain_helper
+    raise ConnectionResetError('Connection lost')
+ConnectionResetError: Connection lost
+2026-03-12 21:50:52,969 ERROR   wandb-AsyncioManager-main:873687 [asyncio_manager.py:fn_wrap_exceptions():184] Uncaught exception in run_soon callback.
+Traceback (most recent call last):
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 182, in fn_wrap_exceptions
+    await fn()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 45, in publish
+    await self._send_server_request(request)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 78, in _send_server_request
+    raise self._broken_exc.with_traceback(self._broken_tb)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 87, in _send_server_request
+    await self._drain_writer()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 96, in _drain_writer
+    await self._writer.drain()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 392, in drain
+    await self._protocol._drain_helper()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 166, in _drain_helper
+    raise ConnectionResetError('Connection lost')
+ConnectionResetError: Connection lost
+2026-03-12 21:50:52,971 ERROR   wandb-AsyncioManager-main:873687 [asyncio_manager.py:fn_wrap_exceptions():184] Uncaught exception in run_soon callback.
+Traceback (most recent call last):
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 182, in fn_wrap_exceptions
+    await fn()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 45, in publish
+    await self._send_server_request(request)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 78, in _send_server_request
+    raise self._broken_exc.with_traceback(self._broken_tb)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 87, in _send_server_request
+    await self._drain_writer()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 96, in _drain_writer
+    await self._writer.drain()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 392, in drain
+    await self._protocol._drain_helper()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 166, in _drain_helper
+    raise ConnectionResetError('Connection lost')
+ConnectionResetError: Connection lost
+2026-03-12 21:50:52,978 ERROR   wandb-AsyncioManager-main:873687 [asyncio_manager.py:fn_wrap_exceptions():184] Uncaught exception in run_soon callback.
+Traceback (most recent call last):
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 182, in fn_wrap_exceptions
+    await fn()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 45, in publish
+    await self._send_server_request(request)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 78, in _send_server_request
+    raise self._broken_exc.with_traceback(self._broken_tb)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 87, in _send_server_request
+    await self._drain_writer()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 96, in _drain_writer
+    await self._writer.drain()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 392, in drain
+    await self._protocol._drain_helper()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 166, in _drain_helper
+    raise ConnectionResetError('Connection lost')
+ConnectionResetError: Connection lost
+2026-03-12 21:50:52,979 ERROR   wandb-AsyncioManager-main:873687 [asyncio_manager.py:fn_wrap_exceptions():184] Uncaught exception in run_soon callback.
+Traceback (most recent call last):
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 182, in fn_wrap_exceptions
+    await fn()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 45, in publish
+    await self._send_server_request(request)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 78, in _send_server_request
+    raise self._broken_exc.with_traceback(self._broken_tb)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 87, in _send_server_request
+    await self._drain_writer()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 96, in _drain_writer
+    await self._writer.drain()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 392, in drain
+    await self._protocol._drain_helper()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 166, in _drain_helper
+    raise ConnectionResetError('Connection lost')
+ConnectionResetError: Connection lost
+2026-03-12 21:50:52,980 ERROR   wandb-AsyncioManager-main:873687 [asyncio_manager.py:fn_wrap_exceptions():184] Uncaught exception in run_soon callback.
+Traceback (most recent call last):
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 182, in fn_wrap_exceptions
+    await fn()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 45, in publish
+    await self._send_server_request(request)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 78, in _send_server_request
+    raise self._broken_exc.with_traceback(self._broken_tb)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 87, in _send_server_request
+    await self._drain_writer()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 96, in _drain_writer
+    await self._writer.drain()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 392, in drain
+    await self._protocol._drain_helper()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 166, in _drain_helper
+    raise ConnectionResetError('Connection lost')
+ConnectionResetError: Connection lost
+2026-03-12 21:50:52,981 ERROR   wandb-AsyncioManager-main:873687 [asyncio_manager.py:fn_wrap_exceptions():184] Uncaught exception in run_soon callback.
+Traceback (most recent call last):
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 182, in fn_wrap_exceptions
+    await fn()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 45, in publish
+    await self._send_server_request(request)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 78, in _send_server_request
+    raise self._broken_exc.with_traceback(self._broken_tb)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 87, in _send_server_request
+    await self._drain_writer()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 96, in _drain_writer
+    await self._writer.drain()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 392, in drain
+    await self._protocol._drain_helper()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 166, in _drain_helper
+    raise ConnectionResetError('Connection lost')
+ConnectionResetError: Connection lost
+2026-03-12 21:50:52,981 ERROR   wandb-AsyncioManager-main:873687 [asyncio_manager.py:fn_wrap_exceptions():184] Uncaught exception in run_soon callback.
+Traceback (most recent call last):
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 182, in fn_wrap_exceptions
+    await fn()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 45, in publish
+    await self._send_server_request(request)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 78, in _send_server_request
+    raise self._broken_exc.with_traceback(self._broken_tb)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 87, in _send_server_request
+    await self._drain_writer()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 96, in _drain_writer
+    await self._writer.drain()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 392, in drain
+    await self._protocol._drain_helper()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 166, in _drain_helper
+    raise ConnectionResetError('Connection lost')
+ConnectionResetError: Connection lost
+2026-03-12 21:50:52,982 ERROR   wandb-AsyncioManager-main:873687 [asyncio_manager.py:fn_wrap_exceptions():184] Uncaught exception in run_soon callback.
+Traceback (most recent call last):
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 182, in fn_wrap_exceptions
+    await fn()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 45, in publish
+    await self._send_server_request(request)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 78, in _send_server_request
+    raise self._broken_exc.with_traceback(self._broken_tb)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 87, in _send_server_request
+    await self._drain_writer()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 96, in _drain_writer
+    await self._writer.drain()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 392, in drain
+    await self._protocol._drain_helper()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 166, in _drain_helper
+    raise ConnectionResetError('Connection lost')
+ConnectionResetError: Connection lost
+2026-03-12 21:50:52,983 ERROR   wandb-AsyncioManager-main:873687 [asyncio_manager.py:fn_wrap_exceptions():184] Uncaught exception in run_soon callback.
+Traceback (most recent call last):
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 182, in fn_wrap_exceptions
+    await fn()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 45, in publish
+    await self._send_server_request(request)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 78, in _send_server_request
+    raise self._broken_exc.with_traceback(self._broken_tb)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 87, in _send_server_request
+    await self._drain_writer()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 96, in _drain_writer
+    await self._writer.drain()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 392, in drain
+    await self._protocol._drain_helper()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 166, in _drain_helper
+    raise ConnectionResetError('Connection lost')
+ConnectionResetError: Connection lost
+2026-03-12 21:50:52,984 ERROR   wandb-AsyncioManager-main:873687 [asyncio_manager.py:fn_wrap_exceptions():184] Uncaught exception in run_soon callback.
+Traceback (most recent call last):
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 182, in fn_wrap_exceptions
+    await fn()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 45, in publish
+    await self._send_server_request(request)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 78, in _send_server_request
+    raise self._broken_exc.with_traceback(self._broken_tb)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 87, in _send_server_request
+    await self._drain_writer()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 96, in _drain_writer
+    await self._writer.drain()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 392, in drain
+    await self._protocol._drain_helper()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 166, in _drain_helper
+    raise ConnectionResetError('Connection lost')
+ConnectionResetError: Connection lost
+2026-03-12 21:50:52,984 ERROR   wandb-AsyncioManager-main:873687 [asyncio_manager.py:fn_wrap_exceptions():184] Uncaught exception in run_soon callback.
+Traceback (most recent call last):
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 182, in fn_wrap_exceptions
+    await fn()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 45, in publish
+    await self._send_server_request(request)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 78, in _send_server_request
+    raise self._broken_exc.with_traceback(self._broken_tb)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 87, in _send_server_request
+    await self._drain_writer()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 96, in _drain_writer
+    await self._writer.drain()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 392, in drain
+    await self._protocol._drain_helper()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 166, in _drain_helper
+    raise ConnectionResetError('Connection lost')
+ConnectionResetError: Connection lost
+2026-03-12 21:50:52,985 ERROR   wandb-AsyncioManager-main:873687 [asyncio_manager.py:fn_wrap_exceptions():184] Uncaught exception in run_soon callback.
+Traceback (most recent call last):
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 182, in fn_wrap_exceptions
+    await fn()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 45, in publish
+    await self._send_server_request(request)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 78, in _send_server_request
+    raise self._broken_exc.with_traceback(self._broken_tb)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 87, in _send_server_request
+    await self._drain_writer()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 96, in _drain_writer
+    await self._writer.drain()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 392, in drain
+    await self._protocol._drain_helper()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 166, in _drain_helper
+    raise ConnectionResetError('Connection lost')
+ConnectionResetError: Connection lost
+2026-03-12 21:50:52,986 ERROR   wandb-AsyncioManager-main:873687 [asyncio_manager.py:fn_wrap_exceptions():184] Uncaught exception in run_soon callback.
+Traceback (most recent call last):
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 182, in fn_wrap_exceptions
+    await fn()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 45, in publish
+    await self._send_server_request(request)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 78, in _send_server_request
+    raise self._broken_exc.with_traceback(self._broken_tb)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 87, in _send_server_request
+    await self._drain_writer()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 96, in _drain_writer
+    await self._writer.drain()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 392, in drain
+    await self._protocol._drain_helper()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 166, in _drain_helper
+    raise ConnectionResetError('Connection lost')
+ConnectionResetError: Connection lost
+2026-03-12 21:50:52,986 ERROR   wandb-AsyncioManager-main:873687 [asyncio_manager.py:fn_wrap_exceptions():184] Uncaught exception in run_soon callback.
+Traceback (most recent call last):
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 182, in fn_wrap_exceptions
+    await fn()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 45, in publish
+    await self._send_server_request(request)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 78, in _send_server_request
+    raise self._broken_exc.with_traceback(self._broken_tb)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 87, in _send_server_request
+    await self._drain_writer()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 96, in _drain_writer
+    await self._writer.drain()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 392, in drain
+    await self._protocol._drain_helper()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 166, in _drain_helper
+    raise ConnectionResetError('Connection lost')
+ConnectionResetError: Connection lost
+2026-03-12 21:50:52,987 ERROR   wandb-AsyncioManager-main:873687 [asyncio_manager.py:fn_wrap_exceptions():184] Uncaught exception in run_soon callback.
+Traceback (most recent call last):
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 182, in fn_wrap_exceptions
+    await fn()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 45, in publish
+    await self._send_server_request(request)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 78, in _send_server_request
+    raise self._broken_exc.with_traceback(self._broken_tb)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 87, in _send_server_request
+    await self._drain_writer()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 96, in _drain_writer
+    await self._writer.drain()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 392, in drain
+    await self._protocol._drain_helper()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 166, in _drain_helper
+    raise ConnectionResetError('Connection lost')
+ConnectionResetError: Connection lost
+2026-03-12 21:50:52,988 ERROR   wandb-AsyncioManager-main:873687 [asyncio_manager.py:fn_wrap_exceptions():184] Uncaught exception in run_soon callback.
+Traceback (most recent call last):
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 182, in fn_wrap_exceptions
+    await fn()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 45, in publish
+    await self._send_server_request(request)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 78, in _send_server_request
+    raise self._broken_exc.with_traceback(self._broken_tb)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 87, in _send_server_request
+    await self._drain_writer()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 96, in _drain_writer
+    await self._writer.drain()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 392, in drain
+    await self._protocol._drain_helper()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 166, in _drain_helper
+    raise ConnectionResetError('Connection lost')
+ConnectionResetError: Connection lost
+2026-03-12 21:50:52,988 ERROR   wandb-AsyncioManager-main:873687 [asyncio_manager.py:fn_wrap_exceptions():184] Uncaught exception in run_soon callback.
+Traceback (most recent call last):
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 182, in fn_wrap_exceptions
+    await fn()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 45, in publish
+    await self._send_server_request(request)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 78, in _send_server_request
+    raise self._broken_exc.with_traceback(self._broken_tb)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 87, in _send_server_request
+    await self._drain_writer()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 96, in _drain_writer
+    await self._writer.drain()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 392, in drain
+    await self._protocol._drain_helper()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 166, in _drain_helper
+    raise ConnectionResetError('Connection lost')
+ConnectionResetError: Connection lost
+2026-03-12 21:50:52,989 ERROR   wandb-AsyncioManager-main:873687 [asyncio_manager.py:fn_wrap_exceptions():184] Uncaught exception in run_soon callback.
+Traceback (most recent call last):
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 182, in fn_wrap_exceptions
+    await fn()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 45, in publish
+    await self._send_server_request(request)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 78, in _send_server_request
+    raise self._broken_exc.with_traceback(self._broken_tb)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 87, in _send_server_request
+    await self._drain_writer()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 96, in _drain_writer
+    await self._writer.drain()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 392, in drain
+    await self._protocol._drain_helper()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 166, in _drain_helper
+    raise ConnectionResetError('Connection lost')
+ConnectionResetError: Connection lost
+2026-03-12 21:50:52,990 ERROR   wandb-AsyncioManager-main:873687 [asyncio_manager.py:fn_wrap_exceptions():184] Uncaught exception in run_soon callback.
+Traceback (most recent call last):
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 182, in fn_wrap_exceptions
+    await fn()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 45, in publish
+    await self._send_server_request(request)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 78, in _send_server_request
+    raise self._broken_exc.with_traceback(self._broken_tb)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 87, in _send_server_request
+    await self._drain_writer()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 96, in _drain_writer
+    await self._writer.drain()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 392, in drain
+    await self._protocol._drain_helper()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 166, in _drain_helper
+    raise ConnectionResetError('Connection lost')
+ConnectionResetError: Connection lost
+2026-03-12 21:50:52,991 ERROR   wandb-AsyncioManager-main:873687 [asyncio_manager.py:fn_wrap_exceptions():184] Uncaught exception in run_soon callback.
+Traceback (most recent call last):
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 182, in fn_wrap_exceptions
+    await fn()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 45, in publish
+    await self._send_server_request(request)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 78, in _send_server_request
+    raise self._broken_exc.with_traceback(self._broken_tb)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 87, in _send_server_request
+    await self._drain_writer()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 96, in _drain_writer
+    await self._writer.drain()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 392, in drain
+    await self._protocol._drain_helper()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 166, in _drain_helper
+    raise ConnectionResetError('Connection lost')
+ConnectionResetError: Connection lost
+2026-03-12 21:50:52,993 ERROR   wandb-AsyncioManager-main:873687 [asyncio_manager.py:fn_wrap_exceptions():184] Uncaught exception in run_soon callback.
+Traceback (most recent call last):
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 182, in fn_wrap_exceptions
+    await fn()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 45, in publish
+    await self._send_server_request(request)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 78, in _send_server_request
+    raise self._broken_exc.with_traceback(self._broken_tb)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 87, in _send_server_request
+    await self._drain_writer()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 96, in _drain_writer
+    await self._writer.drain()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 392, in drain
+    await self._protocol._drain_helper()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 166, in _drain_helper
+    raise ConnectionResetError('Connection lost')
+ConnectionResetError: Connection lost
+2026-03-12 21:50:52,993 ERROR   wandb-AsyncioManager-main:873687 [asyncio_manager.py:fn_wrap_exceptions():184] Uncaught exception in run_soon callback.
+Traceback (most recent call last):
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 182, in fn_wrap_exceptions
+    await fn()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 45, in publish
+    await self._send_server_request(request)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 78, in _send_server_request
+    raise self._broken_exc.with_traceback(self._broken_tb)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 87, in _send_server_request
+    await self._drain_writer()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 96, in _drain_writer
+    await self._writer.drain()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 392, in drain
+    await self._protocol._drain_helper()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 166, in _drain_helper
+    raise ConnectionResetError('Connection lost')
+ConnectionResetError: Connection lost
+2026-03-12 21:50:52,994 ERROR   wandb-AsyncioManager-main:873687 [asyncio_manager.py:fn_wrap_exceptions():184] Uncaught exception in run_soon callback.
+Traceback (most recent call last):
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 182, in fn_wrap_exceptions
+    await fn()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 45, in publish
+    await self._send_server_request(request)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 78, in _send_server_request
+    raise self._broken_exc.with_traceback(self._broken_tb)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 87, in _send_server_request
+    await self._drain_writer()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 96, in _drain_writer
+    await self._writer.drain()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 392, in drain
+    await self._protocol._drain_helper()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 166, in _drain_helper
+    raise ConnectionResetError('Connection lost')
+ConnectionResetError: Connection lost
+2026-03-12 21:50:52,995 ERROR   wandb-AsyncioManager-main:873687 [asyncio_manager.py:fn_wrap_exceptions():184] Uncaught exception in run_soon callback.
+Traceback (most recent call last):
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 182, in fn_wrap_exceptions
+    await fn()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 45, in publish
+    await self._send_server_request(request)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 78, in _send_server_request
+    raise self._broken_exc.with_traceback(self._broken_tb)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 87, in _send_server_request
+    await self._drain_writer()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 96, in _drain_writer
+    await self._writer.drain()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 392, in drain
+    await self._protocol._drain_helper()
+  File "/usr/lib/python3.12/asyncio/streams.py", line 166, in _drain_helper
+    raise ConnectionResetError('Connection lost')
+ConnectionResetError: Connection lost

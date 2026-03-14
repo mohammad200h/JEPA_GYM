@@ -1,0 +1,19 @@
+{"time":"2026-03-12T21:05:24.206434984Z","level":"INFO","msg":"wandb-core"}
+{"time":"2026-03-12T21:05:24.207884979Z","level":"INFO","msg":"stream: starting","core version":"0.25.1"}
+{"time":"2026-03-12T21:05:24.50871642Z","level":"INFO","msg":"stream: created new stream","id":"jvgmtymu"}
+{"time":"2026-03-12T21:05:24.508814476Z","level":"INFO","msg":"handler: started"}
+{"time":"2026-03-12T21:05:24.508991889Z","level":"INFO","msg":"stream: started"}
+{"time":"2026-03-12T21:05:24.509076049Z","level":"INFO","msg":"writer: started","stream_id":"jvgmtymu"}
+{"time":"2026-03-12T21:05:24.509120954Z","level":"INFO","msg":"sender: started"}
+{"time":"2026-03-12T21:05:30.285250494Z","level":"INFO","msg":"filestream: sending request","total_files":0,"uploaded_len":1}
+{"time":"2026-03-12T21:05:30.449110445Z","level":"INFO","msg":"filestream: request sent","status":"200 OK"}
+{"time":"2026-03-12T21:05:32.075926183Z","level":"INFO","msg":"stream: closing"}
+{"time":"2026-03-12T21:05:41.906536325Z","level":"WARN","msg":"tensorboard: no root directory","error":"timed out after 10s"}
+{"time":"2026-03-12T21:05:41.906632683Z","level":"INFO","msg":"tensorboard: tracking new log directory","rootDir":{},"logDir":"LocalOrCloudPath(LocalPath=\"/home/mamad/Hubby/JEPA/JEPA_GYM/MountainCar/Preconception/logs/PPO_3\")","namespace":""}
+{"time":"2026-03-12T21:05:41.907094948Z","level":"INFO","msg":"tensorboard: saving file","fileLocation":"/home/mamad/Hubby/JEPA/JEPA_GYM/MountainCar/Preconception/logs/PPO_3/events.out.tfevents.1773349531.Blade.739943.0","runPath":"logs/PPO_3/events.out.tfevents.1773349531.Blade.739943.0"}
+{"time":"2026-03-12T21:05:42.481996306Z","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2026-03-12T21:05:42.482366022Z","level":"INFO","msg":"filestream: sending request","total_files":3,"events_offset":0,"events_lines":2,"console_offset":0,"console_lines":64,"uploaded_len":5,"complete":true,"exit_code":1}
+{"time":"2026-03-12T21:05:42.837155183Z","level":"INFO","msg":"filestream: request sent","status":"200 OK"}
+{"time":"2026-03-12T21:05:42.837418159Z","level":"INFO","msg":"handler: closed"}
+{"time":"2026-03-12T21:05:42.837510191Z","level":"INFO","msg":"sender: closed"}
+{"time":"2026-03-12T21:05:42.83751826Z","level":"INFO","msg":"stream: closed"}

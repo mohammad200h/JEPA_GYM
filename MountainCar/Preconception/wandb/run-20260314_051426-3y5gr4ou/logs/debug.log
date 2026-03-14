@@ -1,0 +1,5 @@
+2026-03-14 05:14:26,863 INFO    MainThread:101126 [wandb_init.py:setup_run_log_directory():717] Logging user logs to /home/mamad/Hubby/JEPA/JEPA_GYM/MountainCar/Preconception/wandb/run-20260314_051426-3y5gr4ou/logs/debug.log
+2026-03-14 05:14:26,863 INFO    MainThread:101126 [wandb_init.py:setup_run_log_directory():718] Logging internal logs to /home/mamad/Hubby/JEPA/JEPA_GYM/MountainCar/Preconception/wandb/run-20260314_051426-3y5gr4ou/logs/debug-internal.log
+2026-03-14 05:14:26,863 INFO    MainThread:101126 [wandb_init.py:init():844] calling init triggers
+2026-03-14 05:14:26,863 INFO    MainThread:101126 [wandb_init.py:init():849] wandb.init called with sweep_config: {}
+config: {'_wandb': {}}

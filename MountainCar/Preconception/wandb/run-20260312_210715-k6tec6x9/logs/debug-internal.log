@@ -1,0 +1,25 @@
+{"time":"2026-03-12T21:07:15.601316646Z","level":"INFO","msg":"wandb-core"}
+{"time":"2026-03-12T21:07:15.605262466Z","level":"INFO","msg":"stream: starting","core version":"0.25.1"}
+{"time":"2026-03-12T21:07:15.919630062Z","level":"INFO","msg":"stream: created new stream","id":"k6tec6x9"}
+{"time":"2026-03-12T21:07:15.919790427Z","level":"INFO","msg":"handler: started"}
+{"time":"2026-03-12T21:07:15.920010638Z","level":"INFO","msg":"stream: started"}
+{"time":"2026-03-12T21:07:15.920038004Z","level":"INFO","msg":"writer: started","stream_id":"k6tec6x9"}
+{"time":"2026-03-12T21:07:15.92008675Z","level":"INFO","msg":"sender: started"}
+{"time":"2026-03-12T21:07:21.921691478Z","level":"INFO","msg":"filestream: sending request","total_files":0,"uploaded_len":1}
+{"time":"2026-03-12T21:07:22.166308809Z","level":"INFO","msg":"filestream: request sent","status":"200 OK"}
+{"time":"2026-03-12T21:07:33.545632664Z","level":"WARN","msg":"tensorboard: no root directory","error":"timed out after 10s"}
+{"time":"2026-03-12T21:07:33.545832611Z","level":"INFO","msg":"tensorboard: tracking new log directory","rootDir":{},"logDir":"LocalOrCloudPath(LocalPath=\"/home/mamad/Hubby/JEPA/JEPA_GYM/MountainCar/Preconception/logs/PPO_4\")","namespace":""}
+{"time":"2026-03-12T21:07:33.548384295Z","level":"INFO","msg":"tensorboard: saving file","fileLocation":"/home/mamad/Hubby/JEPA/JEPA_GYM/MountainCar/Preconception/logs/PPO_4/events.out.tfevents.1773349643.Blade.746820.0","runPath":"logs/PPO_4/events.out.tfevents.1773349643.Blade.746820.0"}
+{"time":"2026-03-12T21:07:36.922235162Z","level":"INFO","msg":"filestream: sending request","total_files":2,"events_offset":0,"events_lines":2,"console_offset":0,"console_lines":10,"uploaded_len":1}
+{"time":"2026-03-12T21:07:37.522148829Z","level":"INFO","msg":"filestream: request sent","status":"200 OK"}
+{"time":"2026-03-12T21:07:51.92251517Z","level":"INFO","msg":"filestream: sending request","total_files":1,"events_offset":2,"events_lines":2}
+{"time":"2026-03-12T21:07:52.267031563Z","level":"INFO","msg":"filestream: request sent","status":"200 OK"}
+{"time":"2026-03-12T21:08:06.921910823Z","level":"INFO","msg":"filestream: sending request","total_files":1,"events_offset":4,"events_lines":2}
+{"time":"2026-03-12T21:08:07.331077259Z","level":"INFO","msg":"filestream: request sent","status":"200 OK"}
+{"time":"2026-03-12T21:08:14.937697653Z","level":"INFO","msg":"stream: closing"}
+{"time":"2026-03-12T21:08:15.401244971Z","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2026-03-12T21:08:15.401541731Z","level":"INFO","msg":"filestream: sending request","total_files":2,"console_offset":10,"console_lines":17,"uploaded_len":4,"complete":true,"exit_code":255}
+{"time":"2026-03-12T21:08:15.642461471Z","level":"INFO","msg":"filestream: request sent","status":"200 OK"}
+{"time":"2026-03-12T21:08:15.642741976Z","level":"INFO","msg":"handler: closed"}
+{"time":"2026-03-12T21:08:15.642826495Z","level":"INFO","msg":"sender: closed"}
+{"time":"2026-03-12T21:08:15.642836307Z","level":"INFO","msg":"stream: closed"}

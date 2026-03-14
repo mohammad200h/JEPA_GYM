@@ -1,0 +1,40 @@
+{
+  "os": "Linux-6.8.0-101-generic-x86_64-with-glibc2.39",
+  "python": "CPython 3.12.3",
+  "startedAt": "2026-03-12T21:01:28.255053Z",
+  "program": "/home/mamad/Hubby/JEPA/JEPA_GYM/MountainCar/Preconception/train_RL.py",
+  "codePath": "MountainCar/Preconception/train_RL.py",
+  "codePathLocal": "train_RL.py",
+  "git": {
+    "remote": "git@github.com:mohammad200h/JEPA_GYM.git",
+    "commit": "e0656610c3169bcba3430e41ed00366ab65d6456"
+  },
+  "email": "mohammad200h@hotmail.com",
+  "root": "/home/mamad/Hubby/JEPA/JEPA_GYM/MountainCar/Preconception",
+  "host": "Blade",
+  "executable": "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/bin/python3",
+  "cpu_count": 8,
+  "cpu_count_logical": 16,
+  "gpu": "NVIDIA GeForce RTX 3080 Laptop GPU",
+  "gpu_count": 1,
+  "disk": {
+    "/": {
+      "total": "3936290357248",
+      "used": "1682519330816"
+    }
+  },
+  "memory": {
+    "total": "33389498368"
+  },
+  "gpu_nvidia": [
+    {
+      "name": "NVIDIA GeForce RTX 3080 Laptop GPU",
+      "memoryTotal": "8589934592",
+      "cudaCores": 6144,
+      "architecture": "Ampere",
+      "uuid": "GPU-18bdf6ad-3490-c9d7-0ad3-fdbffe5f5f01"
+    }
+  ],
+  "cudaVersion": "12.8",
+  "writerId": "m8a9wwtuvm15sjk9aih0oagobj1i54ez"
+}

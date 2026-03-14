@@ -1,0 +1,116 @@
+_allow_dotted_keys:
+    value: false
+_convert_dict:
+    value: true
+_fields:
+    value:
+        batch_size: 128
+        cosine_T_max: 1000000
+        cosine_eta_min: 1e-06
+        dropout: 0
+        ema_tau: 0.99
+        embed_dim: 4
+        hidden_dim: 256
+        lr: 0.0003
+        lr_scheduler: cosine
+        max_epochs: 2000
+        obs0_loss_weight: 1
+        plateau_factor: 0.5
+        plateau_min_lr: 1e-06
+        plateau_patience: 10
+        seed: 42
+        val_ratio: 0.1
+        weight_decay: 1e-05
+_locked:
+    value: false
+_sort_keys:
+    value: true
+_type_safe:
+    value: true
+_wandb:
+    value:
+        cli_version: 0.25.1
+        e:
+            8dp3h6gh5tswexs73cvgmonhp118lshg:
+                codePath: MountainCar/Preconception/train_jeap.py
+                codePathLocal: train_jeap.py
+                cpu_count: 8
+                cpu_count_logical: 16
+                cudaVersion: "12.8"
+                disk:
+                    /:
+                        total: "3936290357248"
+                        used: "1682482376704"
+                email: mohammad200h@hotmail.com
+                executable: /home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/bin/python3
+                git:
+                    commit: e0656610c3169bcba3430e41ed00366ab65d6456
+                    remote: git@github.com:mohammad200h/JEPA_GYM.git
+                gpu: NVIDIA GeForce RTX 3080 Laptop GPU
+                gpu_count: 1
+                gpu_nvidia:
+                    - architecture: Ampere
+                      cudaCores: 6144
+                      memoryTotal: "8589934592"
+                      name: NVIDIA GeForce RTX 3080 Laptop GPU
+                      uuid: GPU-18bdf6ad-3490-c9d7-0ad3-fdbffe5f5f01
+                host: Blade
+                memory:
+                    total: "33389498368"
+                os: Linux-6.8.0-101-generic-x86_64-with-glibc2.39
+                program: /home/mamad/Hubby/JEPA/JEPA_GYM/MountainCar/Preconception/train_jeap.py
+                python: CPython 3.12.3
+                root: /home/mamad/Hubby/JEPA/JEPA_GYM/MountainCar/Preconception
+                startedAt: "2026-03-12T19:42:56.172812Z"
+                writerId: 8dp3h6gh5tswexs73cvgmonhp118lshg
+        m: []
+        python_version: 3.12.3
+        t:
+            "1":
+                - 1
+                - 9
+                - 41
+                - 103
+                - 105
+            "2":
+                - 1
+                - 9
+                - 41
+                - 103
+                - 105
+            "3":
+                - 13
+            "4": 3.12.3
+            "5": 0.25.1
+            "12": 0.25.1
+            "13": linux-x86_64
+action_dim:
+    value: 1
+cosine_T_max:
+    value: 1000000
+cosine_eta_min:
+    value: 1e-06
+dropout:
+    value: 0
+ema_tau:
+    value: 0.99
+embed_dim:
+    value: 4
+hidden_dim:
+    value: 256
+lr:
+    value: 0.0003
+lr_scheduler:
+    value: cosine
+obs_dim:
+    value: 2
+obs0_loss_weight:
+    value: 1
+plateau_factor:
+    value: 0.5
+plateau_min_lr:
+    value: 1e-06
+plateau_patience:
+    value: 10
+weight_decay:
+    value: 1e-05

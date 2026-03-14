@@ -1,0 +1,18 @@
+
+
+reward_type: gym
+ done_type: gym
+
+
+Using cuda device
+/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/stable_baselines3/common/on_policy_algorithm.py:150: UserWarning: You are trying to run PPO on the GPU, but it is primarily intended to run on the CPU when not using a CNN policy (you are using ActorCriticPolicy which should be a MlpPolicy). See https://github.com/DLR-RM/stable-baselines3/issues/1245 for more info. You can pass `device='cpu'` or `export CUDA_VISIBLE_DEVICES=` to force using the CPU.Note: The model will train, but the GPU utilization will be poor and the training might take longer than on CPU.
+  warnings.warn(
+Logging to logs/PPO_embed_dim_2/PPO_3
+/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/stable_baselines3/common/callbacks.py:418: UserWarning: Training and eval env are not of the same type<stable_baselines3.common.vec_env.subproc_vec_env.SubprocVecEnv object at 0x7606bcfc5f10> != <stable_baselines3.common.vec_env.dummy_vec_env.DummyVecEnv object at 0x7606bc0e7770>
+  warnings.warn("Training and eval env are not of the same type" f"{self.training_env} != {self.eval_env}")
+
+
+reward_type: gym
+ done_type: gym
+/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/gymnasium/wrappers/rendering.py:293: UserWarning: [33mWARN: Overwriting existing videos at /home/mamad/Hubby/JEPA/JEPA_GYM/MountainCar/Preconception/videos folder (try specifying a different `video_folder` for the `RecordVideo` wrapper if this is not desired)[0m
+  logger.warn(

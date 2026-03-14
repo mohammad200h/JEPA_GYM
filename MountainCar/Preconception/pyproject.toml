@@ -23,6 +23,8 @@ numpy = "^1.26.0"
 torchvision = "^0.18.0"
 Pillow = "^10.0.0"
 setuptools = "^82.0.0"
+ml-collections = "^1.1.0"
+wandb = "^0.25.1"
 
 
 [build-system]

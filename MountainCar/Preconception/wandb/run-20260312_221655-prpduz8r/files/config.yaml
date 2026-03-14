@@ -1,0 +1,59 @@
+_wandb:
+    value:
+        cli_version: 0.25.1
+        e:
+            m8z6nh6pe33vvpxp3s65xgyl23raa7r1:
+                codePath: MountainCar/Preconception/train_RL.py
+                codePathLocal: train_RL.py
+                cpu_count: 8
+                cpu_count_logical: 16
+                cudaVersion: "12.8"
+                disk:
+                    /:
+                        total: "3936290357248"
+                        used: "1682531979264"
+                email: mohammad200h@hotmail.com
+                executable: /home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/bin/python3
+                git:
+                    commit: e0656610c3169bcba3430e41ed00366ab65d6456
+                    remote: git@github.com:mohammad200h/JEPA_GYM.git
+                gpu: NVIDIA GeForce RTX 3080 Laptop GPU
+                gpu_count: 1
+                gpu_nvidia:
+                    - architecture: Ampere
+                      cudaCores: 6144
+                      memoryTotal: "8589934592"
+                      name: NVIDIA GeForce RTX 3080 Laptop GPU
+                      uuid: GPU-18bdf6ad-3490-c9d7-0ad3-fdbffe5f5f01
+                host: Blade
+                memory:
+                    total: "33389498368"
+                os: Linux-6.8.0-101-generic-x86_64-with-glibc2.39
+                program: /home/mamad/Hubby/JEPA/JEPA_GYM/MountainCar/Preconception/train_RL.py
+                python: CPython 3.12.3
+                root: /home/mamad/Hubby/JEPA/JEPA_GYM/MountainCar/Preconception
+                startedAt: "2026-03-12T22:16:55.490504Z"
+                writerId: m8z6nh6pe33vvpxp3s65xgyl23raa7r1
+        m: []
+        python_version: 3.12.3
+        t:
+            "1":
+                - 1
+                - 9
+                - 41
+                - 103
+                - 105
+            "2":
+                - 1
+                - 9
+                - 41
+                - 103
+                - 105
+            "3":
+                - 13
+                - 35
+                - 41
+            "4": 3.12.3
+            "5": 0.25.1
+            "12": 0.25.1
+            "13": linux-x86_64

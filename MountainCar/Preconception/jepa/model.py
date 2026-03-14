@@ -1,5 +1,5 @@
 import copy
-from typing import Literal, Optional, Tuple
+from typing import Literal, Tuple
 
 import numpy as np
 import pytorch_lightning as pl
@@ -62,6 +62,7 @@ class JEPA(pl.LightningModule):
         plateau_factor: float = 0.5,
         plateau_patience: int = 10,
         plateau_min_lr: float = 1e-6,
+        obs0_loss_weight: float = 1.0,
     ) -> None:
         """
         Args:
@@ -79,6 +80,7 @@ class JEPA(pl.LightningModule):
             plateau_factor: Factor by which LR is reduced (only if lr_scheduler=="plateau").
             plateau_patience: Epochs without improvement before reducing LR (only if lr_scheduler=="plateau").
             plateau_min_lr: Minimum LR for plateau schedule (only if lr_scheduler=="plateau").
+            obs0_loss_weight: Weight for auxiliary loss predicting obs_{t+1}[0] from z_pred.
         """
         super().__init__()
         self.save_hyperparameters()
@@ -103,6 +105,9 @@ class JEPA(pl.LightningModule):
             dropout=dropout,
         )
 
+        # Head: z_pred -> obs_{t+1}[0] (predict first element of next observation)
+        self.obs0_head = nn.Linear(embed_dim, 1)
+
         # Target encoder: [o_t, o_{t+1}] -> z_target (EMA copy of context encoder)
         self.target_encoder = copy.deepcopy(self.context_encoder)
         for p in self.target_encoder.parameters():
@@ -117,6 +122,7 @@ class JEPA(pl.LightningModule):
         self.plateau_factor = plateau_factor
         self.plateau_patience = plateau_patience
         self.plateau_min_lr = plateau_min_lr
+        self.obs0_loss_weight = obs0_loss_weight
 
     @torch.no_grad()
     def _update_target_encoder(self) -> None:
@@ -172,17 +178,26 @@ class JEPA(pl.LightningModule):
         z_pred = self.predictor(z_in)
         return z_pred
 
+    def predict_obs0(self, z_pred: torch.Tensor) -> torch.Tensor:
+        """
+        Predict obs_{t+1}[0] from the predicted representation.
+
+        Args:
+            z_pred: (B, embed_dim) predicted target embedding
+        Returns:
+            (B,) predicted first element of obs_{t+1}
+        """
+        return self.obs0_head(z_pred).squeeze(-1)
+
     def training_step(
         self,
-        batch: Tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor],
+        batch: Tuple[torch.Tensor, ...],
         batch_idx: int,
     ) -> torch.Tensor:
         """
-        Expects batch = (obs_tm1, obs_t, action_t, obs_tp1).
-
-        Each tensor has shape (B, dim).
+        Expects batch = (obs_tm1, obs_t, action_t, obs_tp1). Each tensor has shape (B, dim).
         """
-        obs_tm1, obs_t, action_t, obs_tp1 = batch
+        obs_tm1, obs_t, action_t, obs_tp1 = batch[0], batch[1], batch[2], batch[3]
 
         # Predicted embedding for obs_{t+1}
         z_pred = self(obs_tm1, obs_t, action_t)
@@ -191,8 +206,16 @@ class JEPA(pl.LightningModule):
         with torch.no_grad():
             z_target = self.encode_target(obs_t, obs_tp1)
 
-        loss = F.mse_loss(z_pred, z_target)
+        loss_rep = F.mse_loss(z_pred, z_target)
+        # Auxiliary: predict obs_{t+1}[0] from z_pred
+        obs0_pred = self.obs0_head(z_pred).squeeze(-1)
+        obs0_target = obs_tp1[:, 0]
+        loss_obs0 = F.mse_loss(obs0_pred, obs0_target)
+        loss = loss_rep + self.obs0_loss_weight * loss_obs0
+
         self.log("train_loss", loss, prog_bar=True, on_step=True, on_epoch=True)
+        self.log("train_loss_rep", loss_rep, prog_bar=False, on_step=True, on_epoch=True)
+        self.log("train_loss_obs0", loss_obs0, prog_bar=False, on_step=True, on_epoch=True)
 
         lr = self.optimizers().param_groups[0]["lr"]
         self.log("lr", lr, prog_bar=False, on_step=True, on_epoch=False)
@@ -204,15 +227,21 @@ class JEPA(pl.LightningModule):
 
     def validation_step(
         self,
-        batch: Tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor],
+        batch: Tuple[torch.Tensor, ...],
         batch_idx: int,
     ) -> torch.Tensor:
-        obs_tm1, obs_t, action_t, obs_tp1 = batch
+        obs_tm1, obs_t, action_t, obs_tp1 = batch[0], batch[1], batch[2], batch[3]
         z_pred = self(obs_tm1, obs_t, action_t)
         with torch.no_grad():
             z_target = self.encode_target(obs_t, obs_tp1)
-        loss = F.mse_loss(z_pred, z_target)
+        loss_rep = F.mse_loss(z_pred, z_target)
+        obs0_pred = self.obs0_head(z_pred).squeeze(-1)
+        obs0_target = obs_tp1[:, 0]
+        loss_obs0 = F.mse_loss(obs0_pred, obs0_target)
+        loss = loss_rep + self.obs0_loss_weight * loss_obs0
         self.log("val_loss", loss, prog_bar=True, on_epoch=True)
+        self.log("val_loss_rep", loss_rep, prog_bar=False, on_epoch=True)
+        self.log("val_loss_obs0", loss_obs0, prog_bar=False, on_epoch=True)
         return loss
 
     def configure_optimizers(self):
@@ -239,3 +268,7 @@ class JEPA(pl.LightningModule):
                 "frequency": 1,
             }
         return {"optimizer": optimizer, "lr_scheduler": lr_config}
+
+
+
+

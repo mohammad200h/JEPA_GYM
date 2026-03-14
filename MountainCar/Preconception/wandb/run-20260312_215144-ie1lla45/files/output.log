@@ -1,0 +1,167 @@
+/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/gymnasium/wrappers/rendering.py:293: UserWarning: [33mWARN: Overwriting existing videos at /home/mamad/Hubby/JEPA/JEPA_GYM/MountainCar/Preconception/videos folder (try specifying a different `video_folder` for the `RecordVideo` wrapper if this is not desired)[0m
+  logger.warn(
+Using cuda device
+/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/stable_baselines3/common/on_policy_algorithm.py:150: UserWarning: You are trying to run PPO on the GPU, but it is primarily intended to run on the CPU when not using a CNN policy (you are using ActorCriticPolicy which should be a MlpPolicy). See https://github.com/DLR-RM/stable-baselines3/issues/1245 for more info. You can pass `device='cpu'` or `export CUDA_VISIBLE_DEVICES=` to force using the CPU.Note: The model will train, but the GPU utilization will be poor and the training might take longer than on CPU.
+  warnings.warn(
+Logging to logs/PPO_embed_dim_2/PPO_2
+/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/stable_baselines3/common/callbacks.py:418: UserWarning: Training and eval env are not of the same type<stable_baselines3.common.vec_env.subproc_vec_env.SubprocVecEnv object at 0x7f7d123916a0> != <stable_baselines3.common.vec_env.dummy_vec_env.DummyVecEnv object at 0x7f7d10325a30>
+  warnings.warn("Training and eval env are not of the same type" f"{self.training_env} != {self.eval_env}")
+/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/gymnasium/wrappers/rendering.py:293: UserWarning: [33mWARN: Overwriting existing videos at /home/mamad/Hubby/JEPA/JEPA_GYM/MountainCar/Preconception/videos folder (try specifying a different `video_folder` for the `RecordVideo` wrapper if this is not desired)[0m
+  logger.warn(
+---------------------------------
+| rollout/           |          |
+|    ep_len_mean     | 1e+03    |
+|    ep_rew_mean     | -52.1    |
+| time/              |          |
+|    fps             | 155      |
+|    iterations      | 1        |
+|    time_elapsed    | 52       |
+|    total_timesteps | 8192     |
+---------------------------------
+------------------------------------------
+| rollout/                |              |
+|    ep_len_mean          | 1e+03        |
+|    ep_rew_mean          | -52.6        |
+| time/                   |              |
+|    fps                  | 143          |
+|    iterations           | 2            |
+|    time_elapsed         | 113          |
+|    total_timesteps      | 16384        |
+| train/                  |              |
+|    approx_kl            | 0.0024001063 |
+|    clip_fraction        | 0.0139       |
+|    clip_range           | 0.2          |
+|    entropy_loss         | -1.45        |
+|    explained_variance   | -0.00272     |
+|    learning_rate        | 0.0003       |
+|    loss                 | -0.408       |
+|    n_updates            | 10           |
+|    policy_gradient_loss | 0.00844      |
+|    std                  | 1.05         |
+|    value_loss           | 0.0349       |
+------------------------------------------
+-------------------------------------------
+| rollout/                |               |
+|    ep_len_mean          | 1e+03         |
+|    ep_rew_mean          | -53.4         |
+| time/                   |               |
+|    fps                  | 142           |
+|    iterations           | 3             |
+|    time_elapsed         | 172           |
+|    total_timesteps      | 24576         |
+| train/                  |               |
+|    approx_kl            | 0.00094950025 |
+|    clip_fraction        | 0.00471       |
+|    clip_range           | 0.2           |
+|    entropy_loss         | -1.48         |
+|    explained_variance   | 0.001         |
+|    learning_rate        | 0.0003        |
+|    loss                 | -0.424        |
+|    n_updates            | 20            |
+|    policy_gradient_loss | 0.00356       |
+|    std                  | 1.07          |
+|    value_loss           | 0.0233        |
+-------------------------------------------
+------------------------------------------
+| rollout/                |              |
+|    ep_len_mean          | 1e+03        |
+|    ep_rew_mean          | -53.9        |
+| time/                   |              |
+|    fps                  | 139          |
+|    iterations           | 4            |
+|    time_elapsed         | 234          |
+|    total_timesteps      | 32768        |
+| train/                  |              |
+|    approx_kl            | 0.0013736727 |
+|    clip_fraction        | 0.00576      |
+|    clip_range           | 0.2          |
+|    entropy_loss         | -1.51        |
+|    explained_variance   | 0.00726      |
+|    learning_rate        | 0.0003       |
+|    loss                 | -0.442       |
+|    n_updates            | 30           |
+|    policy_gradient_loss | 0.00478      |
+|    std                  | 1.1          |
+|    value_loss           | 0.0211       |
+------------------------------------------
+/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/gymnasium/utils/passive_env_checker.py:227: UserWarning: [33mWARN: Expects `terminated` signal to be a boolean, actual type: <class 'torch.Tensor'>[0m
+  logger.warn(
+Eval num_timesteps=40000, episode_reward=-0.22 +/- 0.00
+Episode length: 1000.00 +/- 0.00
+------------------------------------------
+| eval/                   |              |
+|    mean_ep_length       | 1e+03        |
+|    mean_reward          | -0.224       |
+| time/                   |              |
+|    total_timesteps      | 40000        |
+| train/                  |              |
+|    approx_kl            | 0.0011646046 |
+|    clip_fraction        | 0.00442      |
+|    clip_range           | 0.2          |
+|    entropy_loss         | -1.53        |
+|    explained_variance   | -0.00971     |
+|    learning_rate        | 0.0003       |
+|    loss                 | -0.451       |
+|    n_updates            | 40           |
+|    policy_gradient_loss | 0.0047       |
+|    std                  | 1.14         |
+|    value_loss           | 0.021        |
+------------------------------------------
+New best mean reward!
+PolicyComparison (step 10000): different from all 0 stored → saved to ./policy_checkpoints/policy_10000_0
+---------------------------------
+| policy_compare/    |          |
+|    min_mmd         | inf      |
+|    num_stored      | 0        |
+|    saved           | 1        |
+| rollout/           |          |
+|    ep_len_mean     | 1e+03    |
+|    ep_rew_mean     | -54.3    |
+| time/              |          |
+|    fps             | 126      |
+|    iterations      | 5        |
+|    time_elapsed    | 323      |
+|    total_timesteps | 40960    |
+---------------------------------
+------------------------------------------
+| rollout/                |              |
+|    ep_len_mean          | 1e+03        |
+|    ep_rew_mean          | -54.7        |
+| time/                   |              |
+|    fps                  | 126          |
+|    iterations           | 6            |
+|    time_elapsed         | 388          |
+|    total_timesteps      | 49152        |
+| train/                  |              |
+|    approx_kl            | 0.0017167076 |
+|    clip_fraction        | 0.00424      |
+|    clip_range           | 0.2          |
+|    entropy_loss         | -1.55        |
+|    explained_variance   | -0.0116      |
+|    learning_rate        | 0.0003       |
+|    loss                 | -0.449       |
+|    n_updates            | 50           |
+|    policy_gradient_loss | -0.000854    |
+|    std                  | 1.14         |
+|    value_loss           | 0.0169       |
+------------------------------------------
+Traceback (most recent call last):
+  File "/home/mamad/Hubby/JEPA/JEPA_GYM/MountainCar/Preconception/train_RL.py", line 147, in <module>
+    train(embed_dim=embed_dim)
+  File "/home/mamad/Hubby/JEPA/JEPA_GYM/MountainCar/Preconception/train_RL.py", line 139, in train
+    model.learn(total_timesteps=1e6, callback=callback)
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/stable_baselines3/ppo/ppo.py", line 311, in learn
+    return super().learn(
+           ^^^^^^^^^^^^^^
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/stable_baselines3/common/on_policy_algorithm.py", line 337, in learn
+    self.train()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/stable_baselines3/ppo/ppo.py", line 275, in train
+    loss.backward()
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/torch/_tensor.py", line 525, in backward
+    torch.autograd.backward(
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/torch/autograd/__init__.py", line 267, in backward
+    _engine_run_backward(
+  File "/home/mamad/.cache/pypoetry/virtualenvs/jepa-CgA3GJpF-py3.12/lib/python3.12/site-packages/torch/autograd/graph.py", line 744, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

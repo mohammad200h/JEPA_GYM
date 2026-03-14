@@ -22,7 +22,8 @@ def load_goal_obs_from_policy(policy_name: str, episode_index: int = 0):
         obs = np.array(f[policy_name][f"eps_{episode_index}"]["obs"])
     goal_obs = obs[-1]
     goal_obs_tm1 = obs[-2]
-    return goal_obs, goal_obs_tm1
+    goal_obs_tm2 = obs[-3]
+    return goal_obs, goal_obs_tm1, goal_obs_tm2
 
 
 
@@ -30,34 +31,49 @@ class MountainCarEnvInRepresentationSpace(gym.Env):
     """Gymnasium-compliant env that operates in JEPA representation space."""
 
     metadata = {"render_modes": ["rgb_array", "human"], "render_fps": 30}
-    DEFAULT_CHECKPOINT = os.path.join(
-        os.path.dirname(__file__),
-        "lightning_logs/version_0/checkpoints/jepa-epoch=0054-val_loss=1.347508e-06.ckpt",
-    )
+   
 
     def __init__(
         self,
-        success_threshold: float = 0.01,
         checkpoint_path: str | None = None,
         render_mode: str | None = None,
+        reward_type: str = "gym",
+        done_type:str = "gym",
+        embed_dim: int = None
+
     ):
         super().__init__()
-        self.success_threshold = success_threshold
+        model_path = os.path.join(
+            os.path.dirname(__file__),
+            f"lightning_logs/embed_dim_{embed_dim}/checkpoints/",
+        )
+        # Find lowest val_loss checkpoint
+        lowest_val_loss = float("inf")
+        checkpoint_with_lowest_val_loss = None
+        for file in os.listdir(model_path):
+            if file.endswith(".ckpt") and "val_loss=" in file:
+                val_loss = float(file.split("val_loss=")[1].split(".ckpt")[0])
+                if val_loss < lowest_val_loss:
+                    lowest_val_loss = val_loss
+                    checkpoint_with_lowest_val_loss = os.path.join(model_path, file)
         self.render_mode = render_mode
+        self.reward_type = reward_type
+        self.done_type = done_type
 
-        self.world_model = self._load_model(checkpoint_path or self.DEFAULT_CHECKPOINT)
-        goal_obs, goal_obs_tm1 = load_goal_obs_from_policy("policy_90000_4")
+        self.world_model = self._load_model(checkpoint_path or checkpoint_with_lowest_val_loss)
+        goal_obs, goal_obs_tm1, goal_obs_tm2 = load_goal_obs_from_policy("policy_90000_4")
         self.goal_obs_z = self._goal_obs_z(goal_obs, goal_obs_tm1)
+        self.goal_obs_tm1_z = self._goal_obsm1_z(goal_obs_tm1, goal_obs_tm2)
+        self.success_threshold = self._work_out_threshold(self.goal_obs_tm1_z, self.goal_obs_z)
 
         render_mode_inner = "rgb_array" if render_mode else None
         self.gym_env = gym.make("MountainCarContinuous-v0", render_mode=render_mode_inner)
 
         self.action_space = self.gym_env.action_space
-        SIZE_OF_FEATURE_VECTOR = 128
         self.observation_space = gym.spaces.Box(
             low=-np.inf,
             high=np.inf,
-            shape=(SIZE_OF_FEATURE_VECTOR,),
+            shape=(embed_dim,),
             dtype=np.float32,
         )
 
@@ -74,7 +90,14 @@ class MountainCarEnvInRepresentationSpace(gym.Env):
         self.obs_z = obs_z
         obs = self._to_numpy(obs_z)
         info = {"ground_truth": ground_truth}
-        return obs, float(reward), terminated, truncated, info
+
+        if self.reward_type == "gym":
+            reward = float(ground_truth["reward"])
+        
+        if self.done_type == "gym":
+            terminated = ground_truth["terminated"]
+            truncated = ground_truth["truncated"]
+        return obs, reward, terminated, truncated, info
 
     def render(self):
         if self.render_mode is None:
@@ -84,16 +107,19 @@ class MountainCarEnvInRepresentationSpace(gym.Env):
     def close(self):
         self.gym_env.close()
 
-    def reward(self, obs_z_t):
-        # reward -> distance between current_obs_z and goal_obs_z
+    def _reward_representaion_distance(self, obs_z_t):
         return -1 * self._representation_dist(obs_z_t, self.goal_obs_z)
 
+    
     def _terminated(self, obs_z_t):
-        return self._representation_dist(obs_z_t, self.goal_obs_z) < self.success_threshold
+        """Terminate when representation is close enough to goal representation."""
+        # feed obs_z_t to predict obs_t[0]
+        obs0_pred = self.world_model.predict_obs0(obs_z_t)
+        return obs0_pred >= 0.45
 
     def _step_world_model(self, obs_z, action):
         obs_z_next = self._predict_next_z(obs_z, action)
-        reward = self.reward(obs_z_next)
+        reward = self._reward_representaion_distance(obs_z_next)
         terminated = self._terminated(obs_z_next)
         truncated = False  # no truncation in representation space; add TimeLimit wrapper if needed
         return obs_z_next, reward, terminated, truncated
@@ -162,6 +188,18 @@ class MountainCarEnvInRepresentationSpace(gym.Env):
         with torch.no_grad():
             goal_obs_z = self.world_model.encode_context(g_tm1, g).squeeze(0)
         return goal_obs_z
+    
+    def _goal_obsm1_z(self, goal_obs_tm1: np.ndarray, goal_obs_tm2: np.ndarray):
+        g_tm1 = torch.as_tensor(goal_obs_tm1, dtype=torch.float32).unsqueeze(0)
+        g_tm2 = torch.as_tensor(goal_obs_tm2, dtype=torch.float32).unsqueeze(0)
+        with torch.no_grad():
+            goal_obs_tm1_z = self.world_model.encode_context(g_tm2, g_tm1).squeeze(0)
+        return goal_obs_tm1_z
+
+    def _work_out_threshold(self,goal_obs_tm1_z: torch.Tensor, goal_obs_z: torch.Tensor):
+        threshold = self._representation_dist(goal_obs_z, goal_obs_tm1_z)
+        return threshold
+
 
 
 # Register so gym.make("MountainCarRepSpace-v0") works.
@@ -170,6 +208,5 @@ class MountainCarEnvInRepresentationSpace(gym.Env):
 #   env = gym.make("MountainCarRepSpace-v0")
 gym.register(
     id="MountainCarRepSpace-v0",
-    entry_point=__name__ + ":MountainCarEnvInRepresentationSpace",
-    kwargs={"success_threshold": 0.01},
+    entry_point=__name__ + ":MountainCarEnvInRepresentationSpace"
 )

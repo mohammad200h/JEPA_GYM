@@ -1,4 +1,3 @@
-import argparse
 import os
 import pytorch_lightning as pl
 import torch
@@ -7,58 +6,68 @@ from torch.utils.data import DataLoader
 
 from jepa.dataset import JEPA_Dataset
 from jepa.model import JEPA
+from jepa.jepa_config import config
+
+import wandb
+from dotenv import load_dotenv
+from pathlib import Path
+from pytorch_lightning.loggers import WandbLogger
+
 
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--lr_scheduler",
-        type=str,
-        choices=["cosine", "plateau"],
-        default="cosine",
-        help="LR schedule: 'cosine' (CosineAnnealingLR) or 'plateau' (ReduceLROnPlateau on val_loss)",
-    )
-    parser.add_argument("--cosine_T_max", type=int, default=1_000_000, help="Max steps for cosine schedule")
-    parser.add_argument("--cosine_eta_min", type=float, default=1e-6, help="Min LR for cosine schedule")
-    parser.add_argument("--plateau_factor", type=float, default=0.5, help="LR reduction factor for plateau")
-    parser.add_argument("--plateau_patience", type=int, default=10, help="Epochs without improvement before reducing LR")
-    parser.add_argument("--plateau_min_lr", type=float, default=1e-6, help="Min LR for plateau schedule")
-    parser.add_argument("--val_ratio", type=float, default=0.1, help="Fraction of data for validation (proper train/val split)")
-    parser.add_argument("--dropout", type=float, default=0, help="Dropout in encoder/predictor (0 to disable)")
-    parser.add_argument("--weight_decay", type=float, default=1e-5, help="Weight decay for AdamW optimizer")
-    parser.add_argument("--max_epochs", type=int, default=2000, help="Max epochs")
-    args = parser.parse_args()
+
+
+    load_dotenv(dotenv_path=Path(__file__).parents[2] / ".env")
+    wandb.login(key=os.getenv("WANDB_API_KEY"))
+    wandb.init(project="jepa-mountaincar", name=f"jepa-mountaincar_{config.embed_dim}")
+    wandb.config.update(config)
+    wandb_logger = WandbLogger(experiment=wandb.run)
+   
+
     # Set random seed for reproducibility
     pl.seed_everything(42, workers = True)
 
     # Enable mixed precision and optimize matmul
     torch.set_float32_matmul_precision('medium')
 
-    train_dataset = JEPA_Dataset(split="train", val_ratio=args.val_ratio)
-    train_dataloader = DataLoader(train_dataset, batch_size=128, shuffle=True, num_workers=15)
+    train_dataset = JEPA_Dataset(split="train", val_ratio=config.val_ratio)
+    train_dataloader = DataLoader(train_dataset, batch_size=config.batch_size, shuffle=True, num_workers=15)
 
-    val_dataset = JEPA_Dataset(split="val", val_ratio=args.val_ratio)
-    val_dataloader = DataLoader(val_dataset, batch_size=128, shuffle=False, num_workers=15)
+    val_dataset = JEPA_Dataset(split="val", val_ratio=config.val_ratio)
+    val_dataloader = DataLoader(val_dataset, batch_size=config.batch_size, shuffle=False, num_workers=15)
 
     model = JEPA(
         obs_dim=2,
         action_dim=1,
-        lr_scheduler=args.lr_scheduler,
-        cosine_T_max=args.cosine_T_max,
-        cosine_eta_min=args.cosine_eta_min,
-        plateau_factor=args.plateau_factor,
-        plateau_patience=args.plateau_patience,
-        plateau_min_lr=args.plateau_min_lr,
-        dropout=args.dropout,
-        weight_decay=args.weight_decay,
+        embed_dim=config.embed_dim,
+        hidden_dim=config.hidden_dim,
+        lr=config.lr,
+        ema_tau=config.ema_tau,
+        lr_scheduler=config.lr_scheduler,
+        cosine_T_max=config.cosine_T_max,
+        cosine_eta_min=config.cosine_eta_min,
+        plateau_factor=config.plateau_factor,
+        plateau_patience=config.plateau_patience,
+        plateau_min_lr=config.plateau_min_lr,
+        dropout=config.dropout,
+        weight_decay=config.weight_decay,
+        obs0_loss_weight=config.obs0_loss_weight,
     )
 
-
+    # Directory for checkpoints specific to this embed_dim
+    checkpoint_dir = os.path.join(
+        os.path.dirname(__file__),
+        "lightning_logs",
+        f"embed_dim_{config.embed_dim}",
+        "checkpoints",
+    )
 
     # Callback: save best checkpoint by val_loss (and last). Use enough precision
     # in filename so different val_loss values don't collide (e.g. 2.9e-6 vs 3.1e-6).
     callbacks = [
         pl.callbacks.ModelCheckpoint(
+            dirpath=checkpoint_dir,
             monitor="val_loss",
             mode="min",
             save_top_k=3,
@@ -77,13 +86,55 @@ def main():
     ]
 
     trainer = pl.Trainer(
-        max_epochs=args.max_epochs,
+        max_epochs=config.max_epochs,
         precision='bf16-mixed',
         callbacks=callbacks,
+        logger=wandb_logger,
     )
     trainer.fit(model, train_dataloader, val_dataloader)
 
+    # Save the model to wandDB as an artifact
+    lightning_root = os.path.join(os.path.dirname(__file__), "lightning_logs")
+    embed_checkpoint_dir = os.path.join(
+        lightning_root, f"embed_dim_{config.embed_dim}", "checkpoints"
+    )
+
+    # Prefer the new embed_dim-based folder; fall back to legacy version_*
+    artifact_dir = None
+    artifact_name_suffix = None
+
+    if os.path.isdir(embed_checkpoint_dir):
+        artifact_dir = embed_checkpoint_dir
+        artifact_name_suffix = f"embed_dim_{config.embed_dim}"
+    else:
+        version_dirs = [
+            d
+            for d in os.listdir(lightning_root)
+            if d.startswith("version_")
+            and os.path.isdir(os.path.join(lightning_root, d))
+        ]
+
+        if version_dirs:
+            version_dirs.sort(key=lambda d: int(d.split("_")[1]))
+            latest_version = version_dirs[-1]
+            legacy_checkpoint_dir = os.path.join(
+                lightning_root, latest_version, "checkpoints"
+            )
+            if os.path.isdir(legacy_checkpoint_dir):
+                artifact_dir = legacy_checkpoint_dir
+                artifact_name_suffix = latest_version
+
+    if artifact_dir is not None:
+        artifact = wandb.Artifact(
+            name=f"jepa-checkpoints-{artifact_name_suffix}-embed_dim_{config.embed_dim}",
+            type="model",
+            description=f"JEPA checkpoints from {artifact_name_suffix}",
+        )
+        artifact.add_dir(artifact_dir)
+        wandb.log_artifact(artifact)
+
     return model
+    
 
 
 if __name__ == "__main__":
